@@ -49,48 +49,6 @@ else{
 }
 */
 
-  bot.commands.plugnotesCommand = {
-            command: 'plugnotes',  //The command to be called. With the standard command literal this would be: !bacon
-            rank: 'user', //Minimum user permission to use the command
-            type: 'exact', //Specify if it can accept variables or not (if so, these have to be handled yourself through the chat.message
-            functionality: function (chat, cmd) {
-                if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                if (!bot.commands.executable(this.rank, chat)) return void (0);
-                else {
-                    API.sendChat("/me :musical_note: PlugNotes são uma outra forma de você conseguir comprar avatares/emblemas, mais informações em : https://docs.google.com/document/d/1Bq3VnTIJ8tsd50JkGPAWO7jyrJNQMPquurGY6A1asp0/edit :musical_note: ");
-                }
-            }
-        }; 
-
- bot.commands.blacklistupdateCommand = {
-            command: 'blupdate',  //The command to be called. With the standard command literal this would be: !bacon
-            rank: 'bouncer', //Minimum user permission to use the command
-            type: 'exact', //Specify if it can accept variables or not (if so, these have to be handled yourself through the chat.message
-            functionality: function (chat, cmd) {
-                if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                if (!bot.commands.executable(this.rank, chat)) return void (0);
-                else {
-                  API.sendChat("/me Lista Negra Atualizada  ");
-                  bot.logNewBlacklistedSongs();
-                }
-            }
-        };
- 
-  bot.commands.eventoCommand = {
-            command: 'evento',  //The command to be called. With the standard command literal this would be: !bacon
-            rank: 'manager', //Minimum user permission to use the command
-            type: 'exact', //Specify if it can accept variables or not (if so, these have to be handled yourself through the chat.message
-            functionality: function (chat, cmd) {
-                if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                if (!bot.commands.executable(this.rank, chat)) return void (0);
-                else {
-                  API.sendChat("/me Evento começando em breve, Travando e Limpando a Lista... "); 
-                  API.moderateLockWaitList(true, true);
-                  API.sendChat("/me A Lista vai ser destravada quando o evento começar. ");
-                }
-            }
-        };
-         
 bot.commands.slotCommand = {
 command: 'slots',
 rank: 'manager',
@@ -164,6 +122,19 @@ if(this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
 if( !bot.commands.executable(this.rank, chat) ) return void (0);
 else{
 API.sendChat("/me O Origem Woot é um javascript que oferece ferramentas para deixar seu plug.dj de cara nova com algumas funções para facilitar sua vida no plug, o Script Origem Woot foi Criado por Caipira, Mr. Assis e Sweet. http://origemwoot.weebly.com/");
+}
+}
+}
+
+bot.commands.plugnotesCommand = {
+command: 'plugnotes',
+rank: 'user',
+type: 'exact',
+functionality: function(chat, cmd){
+if(this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+if( !bot.commands.executable(this.rank, chat) ) return void (0);
+else{
+API.sendChat("/me :musical_note: Plug Notes oferecem uma maneira de mostrar seu apoio ao plug.dj, ajudando a nos manter funcionando, melhorando e adicionando as funcionalidades que vocês mais pedem, como a pesquisa na playlist e aplicativo para celular, para que o plug.dj continue sendo um lugar para você descobrir e compartilhar suas novas músicas favoritas com outras pessoas de todo o mundo! Mais Informacoes em : http://goo.gl/IAYT6I :musical_note: ");
 }
 }
 }
